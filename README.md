@@ -9,7 +9,7 @@
 
 3.振ったか(is_shake), 握ったか(is_stick)でdrum-rollを鳴らす(仮)
 
-4. 3かつ距離が近いかで完成音をならす
+4.3かつ距離が近いかで完成音をならす
 
 ### Oya機(Arduino) の処理
 **blackbox**
