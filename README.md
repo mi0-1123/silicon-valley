@@ -1,6 +1,6 @@
 # SiliconVallley
 
-**ただの保存ファイルです**
+**ただの保管場所です**
 
 ### raspberry pi の処理
 1.arduino Oya機 から "color_id,is_shake,is_stick,rssi" をbyte列で受け取る
