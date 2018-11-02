@@ -1,6 +1,8 @@
-import time
 import sys
+import glob
+import random
 
+import pygame.mixer
 import serial
 
 from sushi_parameter import SushiParameter
@@ -11,7 +13,11 @@ RATE = 9600
 
 
 if __name__ == '__main__':
+    
     ser = serial.Serial(BLUETOOTH, RATE, timeout=2)
+    drumroll_list = glob.glob("soundfile/roll/*.mp3")
+    complete_sound_list = glob.glob('soundfile/comp/*.mp3')
+
     while True:
         try:
             is_finished = False
@@ -19,13 +25,18 @@ if __name__ == '__main__':
             print('get',strmsg,end='')  #Oya機から受け取った値を出力します
             received_values = list(strmsg.split(','))
             sushi_parameter = SushiParameter(received_values[0],received_values[1],received_values[2],received_values[3])
-
+            
+            #くっついて縦振りしてると音楽を流す
             if sushi_parameter.is_shake and sushi_parameter.is_stick:
-                print('nyan')
+                drumroll_file = random.choice(drumroll_list)
+                play_music(drumroll_file)
                 is_finished = True
         
-            if is_finished and sushi_parameter.dist < -43.0:
-                print('bow')
+            #握っていて、距離が違いと鳴らす
+            if is_finished and sushi_parameter.dist > -43.0:
+                complete_file = random.choice(complete_sound_list)
+                if not pygame.mixer.music.get_busy():
+                    play_music(complete_file)
 
 
 
@@ -34,4 +45,11 @@ if __name__ == '__main__':
             sys.exit(0)
 
 
+
+def play_music(self, filepath):
+    if pygame.mixer.get_init() is None:
+        pygame.mixer.init()
+    
+    pygame.mixer.music.load(filepath)
+    pygame.mixer.music.play(1)
 
