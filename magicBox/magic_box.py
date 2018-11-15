@@ -21,8 +21,12 @@ if __name__ == '__main__':
     while True:
         try:
             is_finished = False
+            strmsg=""
             strmsg=ser.readline().decode()  #受け取ったメッセージをbyte->stringに直してstrmsgに代入してます
-            print('get',strmsg,end='')  #Oya機から受け取った値を出力します
+            if strmsg is "":
+                print('get nothing')
+                continue
+            print('get',strmsg)  #Oya機から受け取った値を出力します
             received_values = list(strmsg.split(','))
             sushi_parameter = SushiParameter(received_values[0],received_values[1],received_values[2],received_values[3])
             
