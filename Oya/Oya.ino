@@ -31,11 +31,11 @@ void setup() {
    Serial.begin(9600, 17, 19); 
    //Serial.begin(9600);
    Wire.begin();               // SCL:12 SDA:25  
-   pinMode( 7, INPUT );        // TACT SW
-   pinMode( 4, OUTPUT);        // LED A
-   pinMode( 3, OUTPUT);        // LED B
-   pinMode( 6, OUTPUT);        // LED C
-   pinMode( 9, OUTPUT);        // LED D
+//   pinMode( 7, INPUT );        // TACT SW
+//   pinMode( 4, OUTPUT);        // LED A
+//   pinMode( 3, OUTPUT);        // LED B
+//   pinMode( 6, OUTPUT);        // LED C
+//   pinMode( 9, OUTPUT);        // LED D
    pinMode(15, OUTPUT);        // LED  
    FastLED.addLeds<NEOPIXEL, 11>(leds, 2); // FastLED setup for RGB LEDs       
    leds[0] = CRGB(1, 0, 0); leds[1] = CRGB(0, 10, 0);  FastLED.show();
