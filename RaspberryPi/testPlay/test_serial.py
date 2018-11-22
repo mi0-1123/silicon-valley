@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     while True:
         try:
-            ser.write(b'sent message\n')
+#            ser.write(b'sent message\n')
 
 #            is_finished = False
             strmsg=""
